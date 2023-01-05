@@ -12,11 +12,11 @@ class AuthorsListScreen extends StatelessWidget {
         title: const Text('Search for authors'),
         actions: <Widget>[
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               showSearch(
                 context: context,
                 delegate: AuthorsSearchDelegate(),
-              );
+              ).then((value) => context.read<AuthorsBloc>().add(AuthorQueryTextChanged(query: '')));
             },
             icon: const Icon(Icons.search),
           ),
@@ -40,13 +40,11 @@ class AuthorsSearchDelegate extends SearchDelegate {
   }
 
   @override
-  Widget? buildLeading(BuildContext context) {
-    return null;
-  }
+  TextInputAction get textInputAction => TextInputAction.none;
 
   @override
-  Widget buildResults(BuildContext context) {
-    return Container();
+  Widget? buildLeading(BuildContext context) {
+    return null;
   }
 
   @override
@@ -67,6 +65,14 @@ class AuthorsSearchDelegate extends SearchDelegate {
             ],
           );
         }
+        if (state.authors.isEmpty) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Center(child: Text('No authors found.')),
+            ],
+          );
+        }
         return ListView.builder(
             itemCount: state.authors.length,
             itemBuilder: (ctx, i) {
@@ -79,5 +85,17 @@ class AuthorsSearchDelegate extends SearchDelegate {
             });
       },
     );
+  }
+
+  @override
+  void close(BuildContext context, result) {
+    //result not needed for sample app
+    super.close(context, result);
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    //not needed for sample app. using buildSuggestions.
+    return Container();
   }
 }

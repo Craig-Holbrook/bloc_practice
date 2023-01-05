@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:books_app/app.dart';
-import 'package:books_app/app_router.dart';
 import 'package:books_app/simple_observer.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   Bloc.observer = SimpleObserver();
 
-  runApp(MyApp(appRouter: AppRouter()));
+  runApp(const MyApp());
 }

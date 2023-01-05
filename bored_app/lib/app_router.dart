@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings routeSettings) {
-    final favoritesCubit = FavoritesCubit();
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
@@ -18,8 +17,8 @@ class AppRouter {
                   activitiesRepository: ActivitiesRepository(),
                 ),
               ),
-              BlocProvider.value(
-                value: favoritesCubit,
+              BlocProvider(
+                create: (_) => FavoritesCubit(),
               ),
             ],
             child: const ActivitiesScreen(),

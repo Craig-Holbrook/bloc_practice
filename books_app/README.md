@@ -1,16 +1,14 @@
 # books_app
 
-A new Flutter project.
+An app for people that want to look up authors and see amount of work they published according to https://openlibrary.org/ 
+Users can search for authors name to get results that match the query.
+Results are limited to 5.
+API calls are triggered on query change and bloc events utilize debounce with duration 1000ms to avoid spamming
 
-## Getting Started
+example debounce scenario where numbers are bloc events and dashes are 1000ms:
+source: 1-2-3---4---5-6-|
+result: ------3---4-----6|
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

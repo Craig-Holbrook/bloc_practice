@@ -1,0 +1,46 @@
+==REQUIREMENTS==
+A screen where you can generate random activities and decide whether or not to favorite the activity.
+
+A screen where you can view your current favorites and remove them if wanted
+
+Favorites are utilize hydrated bloc for persistence 
+
+
+# Data layer
+  bored api
+  
+#Domain layer
+  bored repository
+
+#Application Layer
+  Presentation:
+    -generate activities screen
+    -favorite activities screen
+
+  Business logic:
+    -activities cubit
+
+    -favorites cubit (use hydrated cubit)
+
+
+
+!start 2:15pm
+
+#implementation ideas
+data layer will just be a boredApi file in a data provider folder
+
+domain layer will be a boredRepository file in repositories folder
+
+robust version of this would be where the layers have their own packages (would take a little more time)
+
+what to expect from
+GET https://www.boredapi.com/api/activity
+{
+  "activity": "Make tie dye shirts",
+  "type": "diy",
+  "participants": 1,
+  "price": 0.2,
+  "link": "",
+  "key": "8092359",
+  "accessibility": 0.2
+}

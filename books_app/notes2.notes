@@ -1,0 +1,22 @@
+==REQUIREMENTS==
+user can search for author by name
+search requests get triggered on every keypress
+to not spam the api implement debounce
+
+#todo:
+- define the architecture
+- get dependencies
+- start coding from data layer -> application layer
+
+# data layer
+open library api
+# domain layer
+author repository
+# application layer
+  # presentation
+  authors list screen
+  # business logic
+  authors bloc
+
+
+  !start 8:18pm

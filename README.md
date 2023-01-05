@@ -1,1 +1,1 @@
-﻿#sample projects to practice bloc concepts
+﻿# Sample projects to practice bloc concepts

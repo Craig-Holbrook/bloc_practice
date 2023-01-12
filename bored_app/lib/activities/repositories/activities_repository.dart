@@ -8,7 +8,6 @@ class ActivitiesRepository {
 
   Future<Activity> getActivity() async {
     final jsonAct = await _boredApi.getActivity();
-
     jsonAct['name'] = jsonAct['activity'];
     jsonAct['participants'] = jsonAct['participants'].toString();
 

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bored_app/activities/models/models.dart';
 import 'package:bored_app/activities/repositories/activities_repository.dart';
+import 'package:equatable/equatable.dart';
 
 part 'activities_state.dart';
 
@@ -8,10 +9,10 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   final ActivitiesRepository _activitiesRepository;
   ActivitiesCubit({required activitiesRepository})
       : _activitiesRepository = activitiesRepository,
-        super(ActivitiesState(status: ActivityRequestStatus.initial));
+        super(const ActivitiesState(status: ActivityRequestStatus.initial));
 
   void getActivity() async {
-    emit(ActivitiesState(status: ActivityRequestStatus.loading));
+    emit(const ActivitiesState(status: ActivityRequestStatus.loading));
 
     try {
       final activity = await _activitiesRepository.getActivity();
@@ -19,11 +20,11 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     } catch (e) {
       // ignore: avoid_print
       print('error : $e');
-      emit(ActivitiesState(status: ActivityRequestStatus.failed));
+      emit(const ActivitiesState(status: ActivityRequestStatus.failed));
     }
   }
 
   void reset() {
-    emit(ActivitiesState(status: ActivityRequestStatus.initial));
+    emit(const ActivitiesState(status: ActivityRequestStatus.initial));
   }
 }

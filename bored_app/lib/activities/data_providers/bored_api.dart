@@ -16,7 +16,6 @@ class BoredApi {
     final response = await _httpClient.get(request);
 
     if (response.statusCode != 200) throw BoredRequestFailure();
-
     final jsonActivity = jsonDecode(response.body) as Map<String, dynamic>;
 
     return jsonActivity;

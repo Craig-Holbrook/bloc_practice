@@ -1,16 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
+import 'package:equatable/equatable.dart';
 
-class Activity {
-  final String name;
-  final String participants;
-  final String type;
-
-  Activity({
+class Activity extends Equatable {
+  const Activity({
     required this.name,
     required this.participants,
     required this.type,
   });
+
+  final String name;
+  final String participants;
+  final String type;
 
   factory Activity.fromMap(Map<String, dynamic> map) {
     return Activity(
@@ -28,11 +27,9 @@ class Activity {
     };
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory Activity.fromJson(String source) =>
-      Activity.fromMap(json.decode(source) as Map<String, dynamic>);
-
   @override
   String toString() => 'Activity(name: $name, participants: $participants, type: $type)';
+
+  @override
+  List<Object?> get props => [name, participants, type];
 }

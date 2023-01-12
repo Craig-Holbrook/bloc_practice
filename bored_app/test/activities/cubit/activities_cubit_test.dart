@@ -5,9 +5,7 @@ import 'package:bored_app/activities/repositories/activities_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockActivitiesRepository extends Mock implements ActivitiesRepository {}
-
-class MockActivity extends Mock implements Activity {}
+class _MockActivitiesRepository extends Mock implements ActivitiesRepository {}
 
 void main() {
   late ActivitiesRepository activitiesRepository;
@@ -15,8 +13,12 @@ void main() {
 
   group('ActivitiesCubit', () {
     setUp(() {
-      activitiesRepository = MockActivitiesRepository();
-      activity = MockActivity();
+      activitiesRepository = _MockActivitiesRepository();
+      activity = activity = const Activity(
+        name: 'test name',
+        participants: 'test participants',
+        type: 'test type',
+      );
     });
     test('initial state is correct', () {
       final activitiesCubit = ActivitiesCubit(activitiesRepository: activitiesRepository);

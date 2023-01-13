@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:books_app/authors/data_providers/open_library_api.dart';
 import 'package:books_app/authors/models/models.dart';
 
@@ -15,6 +17,6 @@ class AuthorRepository {
   Future<List<Author>> getAuthors(String query) async {
     final authorsJson = await _openLibraryApi.getAuthors(query);
 
-    return authorsJson.map(Author.fromMap).toList();
+    return authorsJson.map((author) => Author.fromMap(author as Map<String, dynamic>)).toList();
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:bloc/bloc.dart';
 import 'package:books_app/authors/models/models.dart';
 import 'package:books_app/authors/repositories/author_repository.dart';
@@ -37,8 +39,13 @@ class AuthorsBloc extends Bloc<AuthorsEvent, AuthorsState> {
     try {
       final authors = await _authorRepository.getAuthors(event.query);
 
-      emit(AuthorsState(
-          status: AuthorRequestStatus.success, authors: authors, lastQuery: event.query));
+      emit(
+        AuthorsState(
+          status: AuthorRequestStatus.success,
+          authors: authors,
+          lastQuery: event.query,
+        ),
+      );
     } catch (e) {
       // ignore: avoid_print
       print(e);

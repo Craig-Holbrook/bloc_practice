@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:books_app/authors/bloc/authors_bloc.dart';
 
+/// Observer to view state change events
 class SimpleObserver extends BlocObserver {
   @override
   // ignore: strict_raw_type

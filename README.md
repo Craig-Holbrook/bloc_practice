@@ -12,4 +12,4 @@
  
  #
  
- refer to readme in each project folder for details 
+ refer to readme in each project folder for more details 

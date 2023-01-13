@@ -1,7 +1,6 @@
+import 'package:activities_repository/activities_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:bored_app/activities/cubit/activities_cubit.dart';
-import 'package:bored_app/activities/models/activity.dart';
-import 'package:bored_app/activities/repositories/activities_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

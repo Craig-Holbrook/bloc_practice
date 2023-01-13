@@ -1,8 +1,7 @@
-import 'package:bored_app/activities/data_providers/bored_api.dart';
-import 'package:bored_app/activities/models/activity.dart';
-import 'package:bored_app/activities/repositories/activities_repository.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:activities_repository/activities_repository.dart';
+import 'package:bored_api/bored_api.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 class _MockBoredApi extends Mock implements BoredApi {}
 
@@ -23,7 +22,7 @@ void main() {
     });
 
     group('getActivity', () {
-      final Map<String, dynamic> activityMap = {
+      final activityMap = {
         'activity': 'test name',
         'participants': 'test participants',
         'type': 'test type',

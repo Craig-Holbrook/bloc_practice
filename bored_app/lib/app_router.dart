@@ -1,5 +1,5 @@
+import 'package:activities_repository/activities_repository.dart';
 import 'package:bored_app/activities/cubit/activities_cubit.dart';
-import 'package:bored_app/activities/repositories/activities_repository.dart';
 import 'package:bored_app/activities/view/activities_screen.dart';
 import 'package:bored_app/favorites/cubit/favorites_cubit.dart';
 import 'package:flutter/material.dart';

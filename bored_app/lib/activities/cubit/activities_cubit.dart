@@ -1,6 +1,5 @@
+import 'package:activities_repository/activities_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:bored_app/activities/models/models.dart';
-import 'package:bored_app/activities/repositories/activities_repository.dart';
 import 'package:equatable/equatable.dart';
 
 part 'activities_state.dart';

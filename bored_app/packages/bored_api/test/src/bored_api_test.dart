@@ -1,7 +1,7 @@
-import 'package:bored_app/activities/data_providers/bored_api.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:bored_api/bored_api.dart';
 import 'package:http/http.dart' as http;
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 class _MockHttpClient extends Mock implements http.Client {}
 
@@ -44,12 +44,14 @@ void main() {
         when(() => response.body).thenReturn('{}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         await boredApi.getActivity();
-        verify(() => httpClient.get(
-              Uri.https(
-                'boredapi.com',
-                'api/activity',
-              ),
-            )).called(1);
+        verify(
+          () => httpClient.get(
+            Uri.https(
+              'boredapi.com',
+              'api/activity',
+            ),
+          ),
+        ).called(1);
       });
       test('throws BoredRequestFailure on non-200 http response', () {
         when(() => response.statusCode).thenReturn(400);

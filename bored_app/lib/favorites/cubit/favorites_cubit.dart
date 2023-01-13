@@ -1,6 +1,5 @@
+import 'package:activities_repository/activities_repository.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-
-import 'package:bored_app/activities/models/activity.dart';
 
 part 'favorites_state.dart';
 

@@ -1,10 +1,10 @@
-import 'package:bored_app/activities/models/activity.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:activities_repository/activities_repository.dart';
+import 'package:test/test.dart';
 
 void main() {
   late Activity activity;
 
-  Map<String, dynamic> activityMap = {
+  final activityMap = {
     'name': 'test name',
     'participants': 'test participants',
     'type': 'test type'

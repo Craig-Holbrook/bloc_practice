@@ -26,6 +26,7 @@ class AuthorsListScreen extends StatelessWidget {
   }
 }
 
+// ignore: strict_raw_type
 class AuthorsSearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {

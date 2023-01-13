@@ -1,15 +1,20 @@
 import 'package:books_app/authors/data_providers/open_library_api.dart';
 import 'package:books_app/authors/models/models.dart';
 
+/// Repository to call methods exposed by OpenLibraryApi
+/// and transform data into Author List
 class AuthorRepository {
-  final OpenLibraryApi _openLibraryApi;
-
+  /// AuthorRepository constructor
   AuthorRepository({OpenLibraryApi? openLibraryApi})
       : _openLibraryApi = openLibraryApi ?? OpenLibraryApi();
 
+  final OpenLibraryApi _openLibraryApi;
+
+  /// maps the json decoded list returned from openLibraryApi.getAuthors to
+  /// list of Authors
   Future<List<Author>> getAuthors(String query) async {
     final authorsJson = await _openLibraryApi.getAuthors(query);
 
-    return authorsJson.map((e) => Author.fromMap(e)).toList();
+    return authorsJson.map(Author.fromMap).toList();
   }
 }

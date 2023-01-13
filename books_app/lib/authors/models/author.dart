@@ -1,7 +1,4 @@
 class Author {
-  final String name;
-  final int workCount;
-
   Author({
     required this.name,
     required this.workCount,
@@ -13,6 +10,9 @@ class Author {
       workCount: map['work_count'] as int,
     );
   }
+
+  final String name;
+  final int workCount;
 
   @override
   String toString() => 'Author(name: $name, workCount: $workCount)';

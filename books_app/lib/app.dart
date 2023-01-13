@@ -4,7 +4,9 @@ import 'package:books_app/authors/views/authors_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+///Material App class
 class MyApp extends StatelessWidget {
+  ///Material App class constructor
   const MyApp({super.key});
 
   @override

@@ -26,6 +26,7 @@ class FavoriteActivities extends StatelessWidget {
                   onPressed: () => context.read<FavoritesCubit>().removeFavorite(index),
                 ),
               );
-            });
+            },
+          );
   }
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: lines_longer_than_80_chars
-
 import 'package:equatable/equatable.dart';
 
 /// A model representing an activity containing

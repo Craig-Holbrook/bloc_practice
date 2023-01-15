@@ -16,11 +16,13 @@ void main() {
 
     group('constructor', () {
       test('can be instantiated', () {
-        expect(ActivitiesCubit(activitiesRepository: activitiesRepository), isNotNull);
+        expect(ActivitiesCubit(activitiesRepository), isNotNull);
       });
       test('initial state is correct', () {
-        expect(ActivitiesCubit(activitiesRepository: activitiesRepository).state,
-            const ActivitiesState(status: ActivityRequestStatus.initial));
+        expect(
+          ActivitiesCubit(activitiesRepository).state,
+          const ActivitiesState(status: ActivityRequestStatus.initial),
+        );
       });
     });
 
@@ -34,20 +36,26 @@ void main() {
           type: 'test type',
         );
       });
-      blocTest('activitiesRepository.getActivity is called once',
-          setUp: () {
-            when(() => activitiesRepository.getActivity()).thenAnswer((_) async => activity);
-          },
-          build: () => ActivitiesCubit(activitiesRepository: activitiesRepository),
-          act: (cubit) => cubit.getActivity(),
-          verify: (_) => verify(() => activitiesRepository.getActivity()).called(1));
+      blocTest<ActivitiesCubit, ActivitiesState>(
+        'activitiesRepository.getActivity is called once',
+        setUp: () {
+          when(
+            () => activitiesRepository.getActivity(),
+          ).thenAnswer((_) async => activity);
+        },
+        build: () => ActivitiesCubit(activitiesRepository),
+        act: (cubit) => cubit.getActivity(),
+        verify: (_) => verify(() => activitiesRepository.getActivity()).called(1),
+      );
 
       blocTest<ActivitiesCubit, ActivitiesState>(
         'emits [loading, failed] when activitiesRepository.getActivity throws',
         setUp: () {
-          when(() => activitiesRepository.getActivity()).thenThrow(Exception('oops'));
+          when(() => activitiesRepository.getActivity()).thenThrow(
+            Exception('oops'),
+          );
         },
-        build: () => ActivitiesCubit(activitiesRepository: activitiesRepository),
+        build: () => ActivitiesCubit(activitiesRepository),
         act: (cubit) => cubit.getActivity(),
         expect: () => <ActivitiesState>[
           const ActivitiesState(status: ActivityRequestStatus.loading),
@@ -56,15 +64,22 @@ void main() {
       );
 
       blocTest<ActivitiesCubit, ActivitiesState>(
-        'emits [loading, success with activity] when activitiesRepository.getActivity returns Activity',
+        '''
+        emits [loading, success with activity] when
+        activitiesRepository.getActivity returns Activity''',
         setUp: () {
-          when(() => activitiesRepository.getActivity()).thenAnswer((_) async => activity);
+          when(
+            () => activitiesRepository.getActivity(),
+          ).thenAnswer((_) async => activity);
         },
-        build: () => ActivitiesCubit(activitiesRepository: activitiesRepository),
-        act: ((cubit) => cubit.getActivity()),
+        build: () => ActivitiesCubit(activitiesRepository),
+        act: (cubit) => cubit.getActivity(),
         expect: () => <ActivitiesState>[
           const ActivitiesState(status: ActivityRequestStatus.loading),
-          ActivitiesState(status: ActivityRequestStatus.successful, activity: activity),
+          ActivitiesState(
+            status: ActivityRequestStatus.successful,
+            activity: activity,
+          ),
         ],
       );
     });
@@ -72,7 +87,7 @@ void main() {
     group('reset', () {
       blocTest<ActivitiesCubit, ActivitiesState>(
         'emits initial state',
-        build: () => ActivitiesCubit(activitiesRepository: activitiesRepository),
+        build: () => ActivitiesCubit(activitiesRepository),
         seed: () => const ActivitiesState(status: ActivityRequestStatus.failed),
         act: (cubit) => cubit.reset(),
         expect: () => <ActivitiesState>[

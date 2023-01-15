@@ -2,8 +2,8 @@ import 'package:activities_repository/activities_repository.dart';
 import 'package:flutter/material.dart';
 
 class ActivityDesciption extends StatelessWidget {
-  final Activity activity;
   const ActivityDesciption({super.key, required this.activity});
+  final Activity activity;
 
   @override
   Widget build(BuildContext context) {

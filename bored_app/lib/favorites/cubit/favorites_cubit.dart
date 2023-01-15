@@ -11,15 +11,16 @@ class FavoritesCubit extends Cubit<FavoritesState> with HydratedMixin {
   }
 
   void removeFavorite(int index) {
-    final favs = [...state.favorites];
-    favs.removeAt(index);
+    final favs = [...state.favorites]..removeAt(index);
     emit(FavoritesState(favorites: favs));
   }
 
   @override
   FavoritesState? fromJson(Map<String, dynamic> json) {
-    var favoritesJson = json['favorites'] as List;
-    var favsList = favoritesJson.map((e) => Activity.fromMap(e)).toList();
+    final favoritesJson = json['favorites'] as List;
+    final favsList = favoritesJson
+        .map((activity) => Activity.fromMap(activity as Map<String, dynamic>))
+        .toList();
     return FavoritesState(favorites: favsList);
   }
 

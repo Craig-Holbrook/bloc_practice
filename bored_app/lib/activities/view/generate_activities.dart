@@ -1,7 +1,6 @@
+import 'package:bored_app/activities/activities.dart';
 import 'package:bored_app/favorites/cubit/favorites_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:bored_app/activities/cubit/activities_cubit.dart';
-import 'package:bored_app/activities/view/activity_description.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GenerateActivities extends StatelessWidget {
@@ -24,16 +23,18 @@ class GenerateActivities extends StatelessWidget {
                 final success = state.status == ActivityRequestStatus.successful;
                 return Column(
                   children: <Widget>[
-                    success
-                        ? ActivityDesciption(activity: state.activity!)
-                        : Text('Generate your next activity!', style: textTheme.headline5),
+                    if (success)
+                      ActivityDesciption(activity: state.activity!)
+                    else
+                      Text('Generate your next activity!', style: textTheme.headline5),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         ElevatedButton(
-                            onPressed: () => context.read<ActivitiesCubit>().getActivity(),
-                            child: const Text('Generate')),
+                          onPressed: () => context.read<ActivitiesCubit>().getActivity(),
+                          child: const Text('Generate'),
+                        ),
                         if (success)
                           FloatingActionButton(
                             mini: true,
@@ -42,7 +43,10 @@ class GenerateActivities extends StatelessWidget {
                               context.read<FavoritesCubit>().addFavorite(state.activity!);
                               context.read<ActivitiesCubit>().reset();
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text('Added to favorites')));
+                                const SnackBar(
+                                  content: Text('Added to favorites'),
+                                ),
+                              );
                             },
                             child: const Icon(
                               Icons.favorite,

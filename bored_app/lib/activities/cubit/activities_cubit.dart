@@ -5,19 +5,23 @@ import 'package:equatable/equatable.dart';
 part 'activities_state.dart';
 
 class ActivitiesCubit extends Cubit<ActivitiesState> {
-  final ActivitiesRepository _activitiesRepository;
-  ActivitiesCubit({required activitiesRepository})
-      : _activitiesRepository = activitiesRepository,
-        super(const ActivitiesState(status: ActivityRequestStatus.initial));
+  ActivitiesCubit(this._activitiesRepository)
+      : super(const ActivitiesState(status: ActivityRequestStatus.initial));
 
-  void getActivity() async {
+  final ActivitiesRepository _activitiesRepository;
+
+  Future<void> getActivity() async {
     emit(const ActivitiesState(status: ActivityRequestStatus.loading));
 
     try {
       final activity = await _activitiesRepository.getActivity();
-      emit(ActivitiesState(status: ActivityRequestStatus.successful, activity: activity));
+      emit(
+        ActivitiesState(
+          status: ActivityRequestStatus.successful,
+          activity: activity,
+        ),
+      );
     } catch (e) {
-      // ignore: avoid_print
       print('error : $e');
       emit(const ActivitiesState(status: ActivityRequestStatus.failed));
     }

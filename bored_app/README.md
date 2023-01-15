@@ -16,3 +16,4 @@ Users can favorite activities generated.
 _\*Bored App tested on Android emulator._
 
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis

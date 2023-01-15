@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:activities_repository/activities_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -22,7 +24,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
         ),
       );
     } catch (e) {
-      print('error : $e');
+      // log('error : $e');
       emit(const ActivitiesState(status: ActivityRequestStatus.failed));
     }
   }

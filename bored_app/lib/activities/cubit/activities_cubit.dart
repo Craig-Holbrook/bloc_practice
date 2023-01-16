@@ -24,7 +24,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
         ),
       );
     } catch (e) {
-      // log('error : $e');
+      log('error : $e');
       emit(const ActivitiesState(status: ActivityRequestStatus.failed));
     }
   }

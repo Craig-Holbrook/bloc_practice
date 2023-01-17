@@ -1,4 +1,5 @@
 import 'package:bored_app/activities/activities.dart';
+import 'package:bored_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +8,7 @@ class GenerateActivities extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
@@ -25,19 +27,19 @@ class GenerateActivities extends StatelessWidget {
                     if (success)
                       ActivityDesciption(activity: state.activity!)
                     else
-                      Text('Generate your next activity!', style: textTheme.titleLarge),
+                      Text(l10n.initialGenerateString, style: textTheme.titleLarge),
                     const SizedBox(height: 20),
                     SizedBox(
                       width: 200,
                       child: ElevatedButton(
                         onPressed: () => context.read<ActivitiesCubit>().getActivity(),
-                        child: const Text('Generate'),
+                        child: Text(l10n.generateButtonTitle),
                       ),
                     )
                   ],
                 );
               } else {
-                return const Text('Some error message feedback');
+                return Text(l10n.generateErrorMsgFeedback);
               }
             },
           ),

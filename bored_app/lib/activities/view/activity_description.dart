@@ -1,6 +1,7 @@
 import 'package:activities_repository/activities_repository.dart';
 import 'package:bored_app/activities/activities.dart';
 import 'package:bored_app/favorites/favorites.dart';
+import 'package:bored_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,7 @@ class ActivityDesciption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
@@ -17,7 +19,7 @@ class ActivityDesciption extends StatelessWidget {
         children: <Widget>[
           ListTile(
             title: Text(activity.name),
-            subtitle: Text('${activity.type} — ${activity.participants} participant(s).'),
+            subtitle: Text('${activity.type} — ${activity.participants} ${l10n.participants}.'),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 10, left: 10),
@@ -29,9 +31,9 @@ class ActivityDesciption extends StatelessWidget {
                 context.read<FavoritesCubit>().addFavorite(activity);
                 context.read<ActivitiesCubit>().reset();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Added to favorites'),
-                    duration: Duration(seconds: 1),
+                  SnackBar(
+                    content: Text(l10n.addedToFavoritesSnackBar),
+                    duration: const Duration(seconds: 1),
                   ),
                 );
               },

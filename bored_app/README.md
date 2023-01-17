@@ -12,6 +12,7 @@ Users can favorite activities generated.
 - Code layering (presentation, domain, data layers)
 - Code modularization by splitting functionality into separate packages
 - Unit testing using bloc_test, mocktail, test, flutter_test (in progress)
+- Built with very_good_cli
 
 _\*Bored App tested on Android._
 

@@ -1,5 +1,6 @@
 import 'package:bored_app/activities/view/generate_activities.dart';
 import 'package:bored_app/favorites/favorites.dart';
+import 'package:bored_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ActivitiesPage extends StatefulWidget {
@@ -14,9 +15,10 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: Text(_selectedIndex == 0 ? 'Generate' : 'Favorites'),
+        title: Text(_selectedIndex == 0 ? l10n.generateNavTitle : l10n.favoritesNavTitle),
         titleTextStyle: Theme.of(context).textTheme.headline5,
       ),
       body: const [
@@ -24,9 +26,9 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
         FavoriteActivities(),
       ][_selectedIndex],
       bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.add), label: 'Generate'),
-          NavigationDestination(icon: Icon(Icons.favorite), label: 'Favorites')
+        destinations: [
+          NavigationDestination(icon: const Icon(Icons.add), label: l10n.generateBottomNav),
+          NavigationDestination(icon: const Icon(Icons.favorite), label: l10n.favoritesBottomNav)
         ],
         selectedIndex: _selectedIndex,
         onDestinationSelected: (value) {

@@ -1,7 +1,55 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "generateButtonTitle": "Generate",
+    "@generateButtonTitle": {
+        "description": "Text shown in Generate Button"
+    },
+
+    "generateBottomNav": "Generate",
+    "@generateBottomNav": {
+        "description": "Text under the icon for generate feature in the bottom navigation"
+    },
+
+    "generateNavTitle": "Generate",
+    "@generateNavTitle": {
+        "description": "Generate navigation title"
+    },
+
+    "favoritesBottomNav": "Favorites",
+    "@favoritesBottomNav": {
+        "description": "Text under the icon for generate feature in the bottom navigation"
+    },
+
+    "favoritesNavTitle": "Favorites",
+    "@favoritesNavTitle": {
+        "description": "Favorites navigation title"
+    },
+
+    "initialGenerateString": "Generate your next activity!",
+    "@initialGenerateString": {
+        "description": "Text shown before generating activity"
+    },
+
+    "addedToFavoritesSnackBar": "Activity added to favorites",
+    "@addedToFavoritesSnackBar": {
+        "description": "Text shown in snack bar after favoriting activity"
+    },
+
+    "generateErrorMsgFeedback": "Error, please try again later",
+    "@generateErrorMsgFeedback": {
+        "description": "Text shown when api call to get activity fails"
+    },
+
+    "noFavoritesFeedback": "You have no favorites",
+    "@noFavoritesFeedback": {
+        "description": "Text shown on favorites screen before any favorites are added"
+    },
+
+    "participants": "participant(s)",
+    "@participants": {
+        "description": "participants string"
     }
+
+
+
 }

@@ -13,7 +13,7 @@ Users can favorite activities generated.
 - Code modularization by splitting functionality into separate packages
 - Unit testing using bloc_test, mocktail, test, flutter_test (in progress)
 
-_\*Bored App tested on Android emulator._
+_\*Bored App tested on Android._
 
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis

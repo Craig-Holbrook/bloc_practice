@@ -3,6 +3,7 @@ import 'package:bored_app/activities/activities.dart';
 import 'package:bored_app/favorites/cubit/favorites_cubit.dart';
 import 'package:bored_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatelessWidget {
@@ -28,10 +29,12 @@ class App extends StatelessWidget {
         ],
         child: MaterialApp(
           theme: ThemeData(
-            appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-            colorScheme: ColorScheme.fromSwatch(
-              accentColor: const Color(0xFF13B9FF),
+            appBarTheme: const AppBarTheme(
+              systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+              color: Colors.white,
+              elevation: 1,
             ),
+            primarySwatch: Colors.red,
           ),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

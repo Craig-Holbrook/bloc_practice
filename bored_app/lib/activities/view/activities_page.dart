@@ -16,7 +16,8 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Need something to do?'),
+        title: Text(_selectedIndex == 0 ? 'Generate' : 'Favorites'),
+        titleTextStyle: Theme.of(context).textTheme.headline5,
       ),
       body: const [
         GenerateActivities(),

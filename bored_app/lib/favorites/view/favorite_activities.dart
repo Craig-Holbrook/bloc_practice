@@ -18,9 +18,10 @@ class FavoriteActivities extends StatelessWidget {
         : ListView.builder(
             itemCount: favorites.length,
             itemBuilder: (context, index) {
+              final activity = favorites[index];
               return ListTile(
-                title: Text(favorites[index].name),
-                subtitle: Text(favorites[index].type),
+                title: Text(activity.name),
+                subtitle: Text('${activity.type} — ${activity.participants} participant(s).'),
                 trailing: IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () => context.read<FavoritesCubit>().removeFavorite(index),

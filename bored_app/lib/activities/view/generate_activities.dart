@@ -1,5 +1,4 @@
 import 'package:bored_app/activities/activities.dart';
-import 'package:bored_app/favorites/cubit/favorites_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +11,7 @@ class GenerateActivities extends StatelessWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: <Widget>[
         Center(
           child: BlocBuilder<ActivitiesCubit, ActivitiesState>(
             builder: (context, state) {
@@ -26,34 +25,14 @@ class GenerateActivities extends StatelessWidget {
                     if (success)
                       ActivityDesciption(activity: state.activity!)
                     else
-                      Text('Generate your next activity!', style: textTheme.headline5),
+                      Text('Generate your next activity!', style: textTheme.titleLarge),
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        ElevatedButton(
-                          onPressed: () => context.read<ActivitiesCubit>().getActivity(),
-                          child: const Text('Generate'),
-                        ),
-                        if (success)
-                          FloatingActionButton(
-                            mini: true,
-                            backgroundColor: Colors.red,
-                            onPressed: () {
-                              context.read<FavoritesCubit>().addFavorite(state.activity!);
-                              context.read<ActivitiesCubit>().reset();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Added to favorites'),
-                                ),
-                              );
-                            },
-                            child: const Icon(
-                              Icons.favorite,
-                              size: 20,
-                            ),
-                          )
-                      ],
+                    SizedBox(
+                      width: 200,
+                      child: ElevatedButton(
+                        onPressed: () => context.read<ActivitiesCubit>().getActivity(),
+                        child: const Text('Generate'),
+                      ),
                     )
                   ],
                 );

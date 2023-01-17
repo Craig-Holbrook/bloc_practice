@@ -23,7 +23,7 @@ class FavoriteActivities extends StatelessWidget {
                 title: Text(activity.name),
                 subtitle: Text('${activity.type} — ${activity.participants} participant(s).'),
                 trailing: IconButton(
-                  icon: const Icon(Icons.delete),
+                  icon: const Icon(Icons.delete_outline),
                   onPressed: () => context.read<FavoritesCubit>().removeFavorite(index),
                 ),
               );
